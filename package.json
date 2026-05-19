@@ -1,0 +1,39 @@
+{
+  "name": "condolivre-front",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "bootstrap": "^5.3.3",
+    "lucide-react": "^0.451.0",
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-currency-input-field": "^3.10.0",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "react-select": "^5.10.2",
+    "recharts": "^2.12.7",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.15",
+    "prettier": "3.8.3",
+    "sass": "^1.79.0",
+    "typescript": "^5.5.4"
+  }
+}

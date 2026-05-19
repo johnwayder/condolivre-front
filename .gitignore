@@ -1,0 +1,32 @@
+# dependencies
+node_modules
+.yarn
+
+# lockfile is committed (CI runs `npm ci`); re-included here because the
+# machine's global gitignore (~/.gitignore_global) excludes package-lock.json
+!package-lock.json
+
+# next.js build output
+.next
+out
+build
+
+# tests
+coverage
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# env / secrets
+# committed: .env.production (only the public NEXT_PUBLIC_API_URL), .env.local.example
+.env*.local
+
+# logs
+*.log
+npm-debug.log*
+
+# os / editor
+.DS_Store
+.idea
+.vscode

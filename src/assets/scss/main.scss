@@ -1,0 +1,735 @@
+@import "./config/variables";
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --cl-primary: #{$cl-primary};
+  --cl-accent: #{$cl-accent};
+  --cl-ink: #{$cl-ink};
+  --cl-muted: #{$cl-muted};
+}
+
+body {
+  background-color: #f5f6fb;
+}
+
+.cl-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+
+  .cl-brand-mark {
+    color: var(--cl-primary);
+  }
+}
+
+// ---------------------------------------------------------------- Auth screen
+.cl-auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cl-auth-hero {
+  background: linear-gradient(150deg, #5c4ee5 0%, #4133c9 100%);
+  color: #fff;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .cl-auth-underline {
+    width: 56px;
+    height: 4px;
+    background: var(--cl-accent);
+    border-radius: 2px;
+  }
+}
+
+.cl-auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .cl-auth {
+    grid-template-columns: 1fr;
+  }
+
+  .cl-auth-hero {
+    display: none;
+  }
+}
+
+// -------------------------------------------------------------- App shell
+.cl-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.cl-sidebar {
+  width: 248px;
+  background: #fff;
+  border-right: 1px solid #e9eaf2;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1045;
+}
+
+.cl-sidebar-header {
+  min-height: 73px;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  border-bottom: 1px solid #e9eaf2;
+}
+
+.cl-sidebar-nav {
+  flex-grow: 1;
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cl-sidebar-section {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cl-muted);
+  padding: 0.75rem 0.75rem 0.25rem;
+}
+
+.cl-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.62rem 0.75rem;
+  border-radius: 0.55rem;
+  color: #4b4d63;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background: #f3f2fd;
+    color: var(--cl-primary);
+  }
+
+  &.active {
+    background: var(--cl-primary);
+    color: #fff;
+  }
+}
+
+.cl-sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid #f0f1f6;
+}
+
+.cl-content {
+  flex-grow: 1;
+  margin-left: 248px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cl-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  min-height: 73px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.85rem;
+  background: #fff;
+  border-bottom: 1px solid #e9eaf2;
+}
+
+.cl-topbar-menu {
+  display: none;
+}
+
+.cl-topbar-title {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.cl-topbar-user {
+  position: relative;
+}
+
+.cl-avatar-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0.4rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    background: #f3f2fd;
+  }
+}
+
+.cl-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cl-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.cl-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  background: #fff;
+  border: 1px solid #e9eaf2;
+  border-radius: 0.6rem;
+  box-shadow: 0 12px 32px rgba(15, 16, 40, 0.15);
+  min-width: 190px;
+  padding: 0.35rem;
+  z-index: 1050;
+}
+
+.cl-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.9rem;
+  text-align: left;
+
+  &:hover {
+    background: #f3f2fd;
+  }
+}
+
+.cl-page {
+  padding: 1.85rem;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.cl-sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .cl-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .cl-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .cl-content {
+    margin-left: 0;
+  }
+
+  .cl-topbar {
+    padding: 0 1rem;
+  }
+
+  .cl-topbar-menu {
+    display: inline-flex;
+  }
+
+  .cl-sidebar-backdrop.open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 16, 40, 0.4);
+    z-index: 1040;
+  }
+
+  .cl-page {
+    padding: 1.1rem;
+  }
+}
+
+// -------------------------------------------------------------- Cards
+.cl-card {
+  border: 1px solid #e9eaf2;
+  background: #fff;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+// Roomier, lighter tables — corners follow the rounded card
+.cl-card .table {
+  margin-bottom: 0;
+}
+
+.cl-card .table > thead > tr > th {
+  padding: 0.95rem 1rem;
+  background: #fafafc;
+  border-bottom: 1px solid #e9eaf2;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.cl-card .table > tbody > tr > td {
+  padding: 0.9rem 1rem;
+  border-color: #f0f1f6;
+  vertical-align: middle;
+}
+
+.cl-card .table > tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+
+.cl-card .table > tbody > tr:hover > td {
+  background-color: #faf9ff;
+}
+
+// ------------------------------------- Responsive tables: cards on mobile
+@media (max-width: 767.98px) {
+  .cl-card .table-responsive {
+    overflow-x: visible;
+  }
+
+  .cl-table-cards,
+  .cl-table-cards > tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .cl-table-cards > thead {
+    display: none;
+  }
+
+  .cl-table-cards > tbody > tr {
+    display: block;
+    margin: 0.85rem;
+    border: 1px solid #e9eaf2;
+    border-radius: 0.7rem;
+    overflow: hidden;
+  }
+
+  .cl-card .cl-table-cards > tbody > tr:hover > td {
+    background-color: transparent;
+  }
+
+  .cl-card .cl-table-cards > tbody > tr > td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.9rem;
+    border: 0;
+    border-bottom: 1px solid #f0f1f6;
+    text-align: right;
+  }
+
+  .cl-card .cl-table-cards > tbody > tr > td:last-child {
+    border-bottom: 0;
+  }
+
+  .cl-table-cards > tbody > tr > td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--cl-muted);
+    text-align: left;
+  }
+
+  .cl-card .cl-table-cards > tbody > tr > td.cl-cell-actions {
+    justify-content: flex-end;
+    background: #fafafc;
+  }
+
+  .cl-table-cards > tbody > tr > td.cl-cell-actions::before {
+    display: none;
+  }
+}
+
+.cl-stat-card {
+  border: 1px solid #e9eaf2;
+  border-radius: 0.8rem;
+
+  .cl-stat-value {
+    font-size: 1.55rem;
+    font-weight: 700;
+  }
+
+  .cl-stat-label {
+    color: var(--cl-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+.cl-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.cl-status-ok {
+  color: #16b981;
+}
+.cl-status-warning {
+  color: #d98e07;
+}
+.cl-status-breach {
+  color: #f0323c;
+}
+
+// -------------------------------------------------------------- Modal
+.cl-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1060;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.75rem 1rem;
+  overflow-y: auto;
+}
+
+.cl-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 16, 40, 0.5);
+}
+
+.cl-modal-dialog {
+  position: relative;
+  background: #fff;
+  border-radius: 0.9rem;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(15, 16, 40, 0.28);
+}
+
+.cl-modal-sm {
+  max-width: 440px;
+}
+.cl-modal-md {
+  max-width: 640px;
+}
+.cl-modal-lg {
+  max-width: 920px;
+}
+
+.cl-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid #eef0f6;
+}
+
+.cl-modal-body {
+  padding: 1.4rem;
+}
+
+// -------------------------------------------------------------- Confirm dialog
+.cl-confirm-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1075;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.cl-confirm-dialog {
+  position: relative;
+  background: #fff;
+  border-radius: 0.9rem;
+  width: 100%;
+  max-width: 470px;
+  padding: 1.5rem;
+  box-shadow: 0 24px 60px rgba(15, 16, 40, 0.32);
+}
+
+.cl-confirm-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cl-confirm-icon-danger {
+  background: #fdecec;
+  color: #f0323c;
+}
+
+.cl-confirm-icon-primary {
+  background: #eeebfd;
+  color: var(--cl-primary);
+}
+
+// -------------------------------------------------------------- Onboarding
+.cl-onboarding {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: #f5f6fb;
+}
+
+.cl-onboarding-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid #e9eaf2;
+  border-radius: 0.9rem;
+  padding: 2rem;
+}
+
+.cl-steps {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cl-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.cl-step-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef0f6;
+  color: var(--cl-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+
+  &.active {
+    background: var(--cl-primary);
+    color: #fff;
+  }
+
+  &.done {
+    background: var(--cl-accent);
+    color: #07261f;
+  }
+}
+
+.cl-step-label {
+  font-size: 0.74rem;
+  color: var(--cl-muted);
+}
+
+.cl-product-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-align: left;
+  width: 100%;
+  border: 1px solid #e9eaf2;
+  border-radius: 0.6rem;
+  background: #fff;
+  padding: 0.75rem 0.9rem;
+
+  &:hover {
+    border-color: var(--cl-primary);
+  }
+
+  &.selected {
+    border-color: var(--cl-primary);
+    background: #f3f2fd;
+  }
+}
+
+// -------------------------------------------------------------- Spinner
+.cl-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  min-height: 240px;
+}
+
+.cl-spinner-full {
+  min-height: 100vh;
+}
+
+// -------------------------------------------------------------- Auth CTAs
+.cl-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  background: var(--cl-accent);
+  color: #07261f;
+  font-weight: 700;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+
+  &:hover {
+    background: #25ccb1;
+    color: #07261f;
+  }
+}
+
+.cl-login-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #d8d4f7;
+  background: #f3f2fd;
+  border-radius: 0.65rem;
+}
+
+// -------------------------------------------------------- Confirm action button
+.cl-confirm-action {
+  color: #fff;
+  border: 0;
+  font-weight: 600;
+}
+
+.cl-confirm-action:hover,
+.cl-confirm-action:focus,
+.cl-confirm-action:disabled {
+  color: #fff;
+}
+
+.cl-confirm-action:disabled {
+  opacity: 0.65;
+}
+
+.cl-confirm-action-danger {
+  background-color: #d92d39;
+}
+
+.cl-confirm-action-danger:hover {
+  background-color: #c0252f;
+}
+
+.cl-confirm-action-primary {
+  background-color: var(--cl-primary);
+}
+
+.cl-confirm-action-primary:hover {
+  background-color: #4a3dd0;
+}
+
+// -------------------------------------------------------------- Toasts
+.cl-toast-stack {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1090;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
+}
+
+.cl-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.7rem;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(15, 16, 40, 0.2);
+  border-left: 4px solid;
+  font-size: 0.9rem;
+  animation: cl-toast-in 0.18s ease-out;
+}
+
+// Icon sizes are pinned explicitly so no global/Bootstrap rule can stretch them.
+.cl-toast > svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cl-toast-close {
+  border: 0;
+  background: transparent;
+  color: var(--cl-muted);
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cl-toast-close > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.cl-toast-success {
+  border-left-color: #16b981;
+}
+
+.cl-toast-success > svg {
+  color: #16b981;
+}
+
+.cl-toast-danger {
+  border-left-color: #f0323c;
+}
+
+.cl-toast-danger > svg {
+  color: #f0323c;
+}
+
+@keyframes cl-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,25 @@
+// CondoLivre brand palette (extracted from condolivre.com.br)
+$cl-primary: #5c4ee5;
+$cl-accent: #2ee6c8;
+$cl-link: #2f6bff;
+$cl-ink: #1a1a2e;
+$cl-muted: #6b7280;
+
+// Bootstrap theme overrides — set before importing bootstrap
+$primary: $cl-primary;
+$info: $cl-link;
+$success: #16b981;
+$warning: #f4b740;
+$danger: #f0323c;
+
+$body-color: $cl-ink;
+$border-radius: 0.7rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 0.9rem;
+$font-family-sans-serif:
+  "Inter",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  sans-serif;
